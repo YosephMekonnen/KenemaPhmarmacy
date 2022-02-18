@@ -1,0 +1,75 @@
+﻿@model List<Kenema_Pharmacy.Models.MedicalProduct>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+<div class="content-links">
+    <h2>Categories</h2>
+    <br />
+    <div class="catalog-items">
+        <div class="Links">
+       
+
+            <span>Medical masks</span>
+            <span>Antiseptics</span>
+            <span>Medical gloves</span>
+            <span>Drugs</span>
+        </div>
+    </div>
+
+
+</div>
+<div class="search-input">
+    <form class="searchform">
+        <input type="text" name="search" id="search"  placeholder="Search by Category" />
+        <button type="submit">Search</button>
+    </form>
+
+</div>
+
+
+@* Database Products*@
+
+<div class="product" id="product">
+    <div class="product-items">
+        @foreach (var items in Model)
+        {
+
+            <div class="item-1">
+                <img src="~/ProductImg/@items.ProductImage" width="310" height="210" />
+                <div class="textandprice">
+                    <div class="title-price">
+                        <h3>@items.ProductName</h3>
+                        @if (items.MedicalPrescription == true)
+                        {
+                            <p class="prescribe">Prescription Required</p>
+
+                        }
+                        else
+                        {
+                            <p class="prescribe">Prescription not Required</p>
+                        }
+
+
+                        <p>$@items.Price</p>
+                    </div>
+                    @if (items.MedicalPrescription == false)
+                    {
+                    <div class="purchase">
+                       
+                        <a href="@Url.Action("AddtoCart", "Home", new { productId = items.ProductId })"><i class="fas fa-plus"></i></a>
+
+                    </div>
+                    }
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+
+
+
+</div>

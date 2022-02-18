@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="content-2">
+    <div class="header">
+        <div class="header-title">
+            <p>Coronavirus</p>
+            <p>Medical Prevention</p>
+        </div>
+        <div class="header-para">
+            <p>
+                BeHealthy is a good choice for all medical facilities, online<br> pharmacy, raise awareness of
+                (2019-nCoV).
+                <br>Template is optimized and fully responsive.
+            </p>
+
+        </div>
+        <div class="header-link">
+            <a href="#product">Protect Myself</a>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+@{
+    Html.RenderPartial("MedicalProductFilter");
+}
+
+@{ 
+    Html.RenderPartial("Checkout");
+}
+
+@{ 
+    Html.RenderPartial("Order");
+}
+
+@{ 
+    Html.RenderPartial("About");
+}
+@{ 
+    Html.RenderPartial("Footer");
+}

@@ -1,0 +1,80 @@
+﻿@*@model Kenema_Pharmacy.Models.MedicalProduct*@
+@using Kenema_Pharmacy.Models
+
+
+<div class="cart-header">
+    <h1>Cart</h1>
+</div>
+<div class="cart-container" id="cart">
+
+    @if (Session["cart"] != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                @{ 
+                    int Total = 0;
+                }
+
+
+
+                @foreach (var items in (List<Item>)Session["cart"])
+                {
+               
+                    int lineTotal = Convert.ToInt32(items.Stock * items.Product.Price);
+                    Total = Convert.ToInt32(Total + lineTotal);
+                    Session["total"] = Total;
+                    // var result = items.Product.Price * items.Stock;
+                    <tr>
+
+                        <td><img src="~/ProductImg/@items.Product.ProductImage" width="100" /></td>
+                        <td>@items.Product.ProductName</td>
+                        <td>@items.Product.Price</td>
+                        <td>@items.Stock</td>
+
+
+                        <td>
+                            <a href="@Url.Action("RemovefromCart", "Home", new { productId = items.Product.ProductId })"><i class="fa fa-times" style="float:right;"></i></a>
+                        </td>
+                    </tr>
+
+
+                }
+
+
+
+
+                
+
+
+
+
+            </tbody>
+            
+
+
+
+        </table>
+     }
+            else {
+                 <h3 style="text-align:center;color:red;">No Item in your cart</h3>
+    
+            } 
+      
+    <div class="total">
+
+            <p class="total-text">Total:<span>@Session["total"] Birr</span></p>
+        </div>
+
+    </div>

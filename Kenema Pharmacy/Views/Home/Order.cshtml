@@ -1,0 +1,37 @@
+﻿@*@model Kenema_Pharmacy.Models.Order*@
+@using Kenema_Pharmacy.Models
+
+
+<div class="order-container" id="order">
+    <h1>Checkout</h1>
+    <div class="order-items">
+
+        <form class="inputform" action="~/Home/Checkout" method="post">
+            <div class="input-value">
+                <div class="name-email">
+                    <input type="text" id="CustomerName" name="CustomerName" placeholder="Full Name" />
+                    <input type="email" id="CustomerEmail" name="CustomerEmail" placeholder="Email" />
+
+                </div>
+                <div class="phone-delivery">
+                    <input type="tel" id="PhoneNumber" name="PhoneNumber" placeholder="Phone number" />
+                    <input type="date" name="DeliveryTime" id="DeliveryTime" placeholder="Delivery Time" />
+
+                </div>
+
+
+            </div>
+            <input type="text" class="address" name="Address" id="Address" placeholder="Address" />
+            <input type="text" class="netamount" placeholder="Net Amount" name="NetAmount" id="NetAmount" value="@Session["Total"]" readonly />
+            <div class="btn">
+                <button type="submit">Complete</button>
+            </div>
+        </form>
+    </div>
+  
+
+
+
+
+
+</div>
